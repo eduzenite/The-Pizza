@@ -15,7 +15,7 @@
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-xl">
-        <a class="navbar-brand" href="#">
+        <a class="navbar-brand" href="{{ route('index') }}">
             <img src="{{ asset('assets/img/icon.png') }}" width="30" height="30" class="d-inline-block align-top" alt=""
                  loading="lazy">
             {{ config('app.name') }}
@@ -43,7 +43,7 @@
                     <a class="nav-link" href="{{ route('user-purchases') }}">Purchses</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('user-login') }}">Login</a>
+                    <a class="nav-link" href="{{ route('user-login') }}">Register/Login</a>
                 </li>
             </ul>
             <form class="form-inline my-2 my-md-0">
@@ -53,22 +53,21 @@
                 <button type="button" class="btn btn-light dropdown-toggle ml-2" data-toggle="dropdown" data-display="static" aria-haspopup="true" aria-expanded="false">
                     <i class="fa fa-shopping-basket"></i>
                 </button>
-                <div class="dropdown-menu p-4 text-muted" style="max-width: 200px;">
-                    <p>
-                        Some example text that's free-flowing within the dropdown menu.
-                    </p>
-                    <p class="mb-0">
-                        And this is more example text.
-                    </p>
+                <div class="dropdown-menu">
+                    <ul class="list-group">
+                        <li class="list-group-item"><a href="{{ route('cart') }}" class="btn btn-primary"><i class="fa fa-shopping-basket"></i> Cart</a></li>
+                    </ul>
                 </div>
             </div>
         </div>
     </div>
 </nav>
 
-@yield('content')
+<main role="main" class="pb-5">
+    @yield('content')
+</main>
 
-<footer class="footer mt-auto py-3">
+<footer class="footer mt-auto py-3 mt-5">
     <div class="container text-center">
         <span class="text-muted">By <a href="https://www.linkedin.com/in/eduardo-nascimento-zenite/" target="_blank">Eduardo Nascimento</a>.</span>
     </div>
@@ -78,7 +77,7 @@
 <!-- Principal JavaScript do Bootstrap
 ================================================== -->
 <!-- Foi colocado no final para a página carregar mais rápido -->
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="{{ asset('assets/vendor/jquery-3.5.1/jquery-3.5.1.min.js ') }}"></script>
 <script src="{{ asset('assets/vendor/bootstrap-4.5.0-dist/js/bootstrap.min.js') }}"></script>
 @yield("script")
 </body>
