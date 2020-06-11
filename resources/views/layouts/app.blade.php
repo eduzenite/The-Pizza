@@ -8,6 +8,7 @@
     <title>Página de produtos, usando Bootstrap.</title>
     <link href="{{ asset('assets/vendor/bootstrap-4.5.0-dist/css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/vendor/fontawesome-free-5.13.0-web/css/all.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet">
     @yield("style")
 </head>
 
@@ -40,7 +41,7 @@
                     <a class="nav-link" href="{{ route('user-profile') }}">My Profile</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('user-purchases') }}">Purchses</a>
+                    <a class="nav-link" href="{{ route('user-purchases') }}">Purchases</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('user-login') }}">Register/Login</a>
@@ -50,13 +51,26 @@
                 <input class="form-control" type="text" placeholder="Search" aria-label="Search">
             </form>
             <div class="btn-group">
-                <button type="button" class="btn btn-light dropdown-toggle ml-2" data-toggle="dropdown" data-display="static" aria-haspopup="true" aria-expanded="false">
+                <button type="button" class="btn btn-light dropdown-toggle ml-2" data-toggle="dropdown"
+                        data-display="static" aria-haspopup="true" aria-expanded="false">
                     <i class="fa fa-shopping-basket"></i>
                 </button>
                 <div class="dropdown-menu">
-                    <ul class="list-group">
-                        <li class="list-group-item"><a href="{{ route('cart') }}" class="btn btn-primary"><i class="fa fa-shopping-basket"></i> Cart</a></li>
-                    </ul>
+                    <li class="dropdown-item lh-condensed">
+                        <h6 class="my-0">Product name</h6>
+                        <small class="text-muted">3x / $ 5.00</small>
+                    </li>
+                    <li class="dropdown-item lh-condensed">
+                        <h6 class="my-0">Second product</h6>
+                        <small class="text-muted">3x / $ 5.00</small>
+                    </li>
+                    <li class="dropdown-item lh-condensed">
+                        <h6 class="my-0">Third item</h6>
+                        <small class="text-muted">3x / $ 5.00</small>
+                    </li>
+                    <li class="dropdown-item text-center">
+                        <a href="{{ route('cart') }}" class="btn btn-block btn-success"><i class="fa fa-shopping-basket"></i> Cart</a>
+                    </li>
                 </div>
             </div>
         </div>
@@ -67,18 +81,20 @@
     @yield('content')
 </main>
 
-<footer class="footer mt-auto py-3 mt-5">
-    <div class="container text-center">
-        <span class="text-muted">By <a href="https://www.linkedin.com/in/eduardo-nascimento-zenite/" target="_blank">Eduardo Nascimento</a>.</span>
+<footer class="footer mt-auto py-3">
+    <div class="text-center">
+        <span class="">By <a href="https://www.linkedin.com/in/eduardo-nascimento-zenite/" target="_blank">Eduardo Nascimento</a>.</span>
     </div>
 </footer>
 
-
-<!-- Principal JavaScript do Bootstrap
-================================================== -->
-<!-- Foi colocado no final para a página carregar mais rápido -->
 <script src="{{ asset('assets/vendor/jquery-3.5.1/jquery-3.5.1.min.js ') }}"></script>
 <script src="{{ asset('assets/vendor/bootstrap-4.5.0-dist/js/bootstrap.min.js') }}"></script>
+
+<script>
+    window.jQuery || document.write('<script src="{{ asset('assets/vendor/jquery-3.5.1/jquery-3.x-git.slim.min.js') }}"><\/script>')
+</script>
+<script src="{{ asset('assets/vendor/bootstrap-4.5.0-dist/js/bootstrap.bundle.min.js') }}"></script>
+<script src="{{ asset('assets/js/script.js') }}"></script>
 @yield("script")
 </body>
 </html>
