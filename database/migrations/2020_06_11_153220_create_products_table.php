@@ -20,7 +20,9 @@ class CreateProductsTable extends Migration
             $table->longText('description');
             $table->float('price');
             $table->integer('status');
+            $table->string('slug');
 
+            $table->unsignedBigInteger('category_id');
             $table->foreign('category_id')
                 ->references('id')->on('categories')
                 ->onDelete('cascade');

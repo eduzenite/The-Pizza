@@ -30,3 +30,6 @@ I finished all screens and now I will start to create the models.
 
 <h2>3° Step</h2>
 I created all the Models and the table links. With Laravel we have the ease of creating Models and Migrations together, which facilitates the abstraction of the solution.
+
+<h2>4° Step</h2>
+I created some data in the system through Seeds, in addition to inserting 4 images for each product. The products were divided into two categories: Pizzas and Drinks.

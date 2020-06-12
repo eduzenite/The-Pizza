@@ -18,6 +18,7 @@ class CreatePhotosTable extends Migration
             $table->string('url');
             $table->string('thumbnail');
 
+            $table->unsignedBigInteger('product_id');
             $table->foreign('product_id')
                 ->references('id')->on('products')
                 ->onDelete('cascade');
