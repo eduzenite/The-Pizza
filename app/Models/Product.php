@@ -5,7 +5,6 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-
 class Product extends Model
 {
     use SoftDeletes;
@@ -19,7 +18,18 @@ class Product extends Model
         'category_id' => Category::class
     ];
 
-    public function photos(){
-        return $this->hasMany('App\Models\Photo');
+    public function photos()
+    {
+        return $this->hasMany(Photo::class);
+    }
+
+    public function categories()
+    {
+        return $this->belongsTo(Category::class);
+    }
+
+    public function purchases()
+    {
+        return $this->belongsTo(Purchase::class);
     }
 }

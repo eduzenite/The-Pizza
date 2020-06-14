@@ -13,21 +13,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-})->name('index');
+Route::get('/', 'ProductController@home')->name('index');
 
 Route::group([
     "prefix" => "products"
 ], function () {
 
-    Route::get('', function () {
-        return view('products');
-    })->name('products');
+    Route::get('/{category?}', 'ProductController@index')->name('products');
 
-    Route::get('/{id}', function () {
-        return view('product');
-    })->name('product');
+    Route::get('/{category?}/{id?}', 'ProductController@show')->name('product');
 });
 
 Route::get('/cart', function () {

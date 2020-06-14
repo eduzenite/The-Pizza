@@ -16,4 +16,9 @@ class Photo extends Model
     protected $casts = [
         'product_id' => Product::class
     ];
+
+    public function products()
+    {
+        $this->belongsTo(Product::class);
+    }
 }

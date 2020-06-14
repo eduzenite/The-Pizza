@@ -60,9 +60,9 @@ class PhotoSeeder extends Seeder
             ['title' => 'Coke', 'url' => '/storage/drinks/coke-4.jpg', 'thumbnail' => '/storage/drinks/thumbnail/coke-4.jpg', 'product_id' => '9'],
 
             ['title' => 'Beer', 'url' => '/storage/drinks/beer-1.jpg', 'thumbnail' => '/storage/drinks/thumbnail/beer-1.jpg', 'product_id' => '10'],
-            ['title' => 'Beer', 'url' => '/storage/drinks/beer-1.jpg', 'thumbnail' => '/storage/drinks/thumbnail/beer-1.jpg', 'product_id' => '10'],
-            ['title' => 'Beer', 'url' => '/storage/drinks/beer-1.jpg', 'thumbnail' => '/storage/drinks/thumbnail/beer-1.jpg', 'product_id' => '10'],
-            ['title' => 'Beer', 'url' => '/storage/drinks/beer-1.jpg', 'thumbnail' => '/storage/drinks/thumbnail/beer-1.jpg', 'product_id' => '10'],
+            ['title' => 'Beer', 'url' => '/storage/drinks/beer-2.jpg', 'thumbnail' => '/storage/drinks/thumbnail/beer-2.jpg', 'product_id' => '10'],
+            ['title' => 'Beer', 'url' => '/storage/drinks/beer-3.jpg', 'thumbnail' => '/storage/drinks/thumbnail/beer-3.jpg', 'product_id' => '10'],
+            ['title' => 'Beer', 'url' => '/storage/drinks/beer-4.jpg', 'thumbnail' => '/storage/drinks/thumbnail/beer-4.jpg', 'product_id' => '10'],
 
             ['title' => 'Juice', 'url' => '/storage/drinks/juice-1.jpg', 'thumbnail' => '/storage/drinks/thumbnail/juice-1.jpg', 'product_id' => '11'],
             ['title' => 'Juice', 'url' => '/storage/drinks/juice-2.jpg', 'thumbnail' => '/storage/drinks/thumbnail/juice-2.jpg', 'product_id' => '11'],

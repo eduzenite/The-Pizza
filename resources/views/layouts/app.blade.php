@@ -32,10 +32,10 @@
                     <a class="nav-link" href="{{ route('index') }}">Home <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('products') }}">Pizza</a>
+                    <a class="nav-link" href="{{ route('products', ['category' => 'pizzas']) }}">Pizza</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('products') }}">Drinks</a>
+                    <a class="nav-link" href="{{ route('products', ['category' => 'drinks']) }}">Drinks</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('user-profile') }}">My Profile</a>
@@ -47,8 +47,14 @@
                     <a class="nav-link" href="{{ route('user-login') }}">Register/Login</a>
                 </li>
             </ul>
-            <form class="form-inline my-2 my-md-0">
-                <input class="form-control" type="text" placeholder="Search" aria-label="Search">
+            <form class="form-inline my-2 my-md-0" action="{{ route('products') }}">
+                <div class="input-group">
+                    <input class="form-control" type="text" placeholder="Search" value="{{ !empty($request->q) ? $request->q : '' }}" name="q" aria-label="Search">
+                    <div class="input-group-append">
+                        <button type="submit" class="input-group-text" id="basic-addon2"><i class="fa fa-search"></i></button>
+                    </div>
+                </div>
+
             </form>
             <div class="btn-group">
                 <button type="button" class="btn btn-light dropdown-toggle ml-2" data-toggle="dropdown"
