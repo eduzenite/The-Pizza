@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>Página de produtos, usando Bootstrap.</title>
+    <title>{{ config('app.name') }}</title>
     <link href="{{ asset('assets/vendor/bootstrap-4.5.0-dist/css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/vendor/fontawesome-free-5.13.0-web/css/all.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet">

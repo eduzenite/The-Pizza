@@ -33,3 +33,6 @@ I created all the Models and the table links. With Laravel we have the ease of c
 
 <h2>4° Step</h2>
 I created some data in the system through Seeds, in addition to inserting 4 images for each product. The products were divided into two categories: Pizzas and Drinks.
+
+<h2>5° Step</h2>
+In this step I created the product controllers and integrated them with their respective views. I reduced the code, implemented the area filters using the URL parameters, which allowed me to use the same controller and the same view for any product category.

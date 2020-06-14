@@ -77,7 +77,7 @@
                 @foreach($other_products as $product)
                     <div class="col-md-4">
                         <div class="card mb-4 shadow-sm">
-                            <a href="{{ route('product', [$product->category_name, $product->id]) }}">
+                            <a href="{{ route('product', [$product->category_slug, $product->id]) }}">
                                 <img src="{{ $product->photos[0]->url }}"
                                      class="img-fluid" alt="{{ $product->name }}">
                             </a>
