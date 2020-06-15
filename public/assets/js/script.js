@@ -67,9 +67,9 @@ var shoppingCart = (function() {
     var obj = {};
 
     // Add to cart
-    obj.addItemToCart = function(name, price, count, id, category) {
+    obj.addItemToCart = function(id, name, price, count, category) {
         for(var item in cart) {
-            if(cart[item].name === name) {
+            if(cart[item].id === id) {
                 cart[item].count ++;
                 saveCart();
                 return;
@@ -80,18 +80,18 @@ var shoppingCart = (function() {
         saveCart();
     }
     // Set count from item
-    obj.setCountForItem = function(name, count) {
+    obj.setCountForItem = function(id, count) {
         for(var i in cart) {
-            if (cart[i].name === name) {
+            if (cart[i].id === id) {
                 cart[i].count = count;
                 break;
             }
         }
     };
     // Remove item from cart
-    obj.removeItemFromCart = function(name) {
+    obj.removeItemFromCart = function(id) {
         for(var item in cart) {
-            if(cart[item].name === name) {
+            if(cart[item].id === id) {
                 cart[item].count --;
                 if(cart[item].count === 0) {
                     cart.splice(item, 1);
@@ -178,7 +178,7 @@ $('.add-to-cart').click(function(event) {
     var price = Number($(this).data('price'));
     var id = Number($(this).data('id'));
     var category = $(this).data('category');
-    shoppingCart.addItemToCart(name, price, 1, id, category);
+    shoppingCart.addItemToCart(id, name, price, 1, category);
     displayCart();
     displayCart2();
 });
@@ -200,13 +200,13 @@ function displayCart() {
             "<td><small class='money_symbol'>$</small> " + cartArray[i].price + "</td>" +
             "<td>" +
             "<div class='input-group'>" +
-            "<button class='minus-item input-group-addon btn btn-primary' data-name=" + cartArray[i].name + ">-</button>" +
-            "<input type='number' class='item-count form-control' data-name='" + cartArray[i].name + "' value='" + cartArray[i].count + "'>" +
-            "<button class='plus-item btn btn-primary input-group-addon' data-name=" + cartArray[i].name + ">+</button>" +
+            "<button class='minus-item input-group-addon btn btn-primary' data-id=" + cartArray[i].id + " data-name=" + cartArray[i].name + ">-</button>" +
+            "<input type='number' class='item-count form-control'  data-id=" + cartArray[i].id + " data-name='" + cartArray[i].name + "' value='" + cartArray[i].count + "'>" +
+            "<button class='plus-item btn btn-primary input-group-addon'  data-id=" + cartArray[i].id + " data-name=" + cartArray[i].name + ">+</button>" +
             "</div>" +
             "</td>" +
             "<td>" +
-            "<button class='delete-item btn btn-danger btn-sm' data-id=" + cartArray[i].id + "><i class='fa fa-times'></i></button></td>" +
+            "<button class='delete-item btn btn-danger btn-sm' data-id='" + cartArray[i].id + "'><i class='fa fa-times'></i></button></td>" +
             " = " +
             "<td><small class='money_symbol'>$</small> " + cartArray[i].total + "</td>" +
             "</tr>";
@@ -247,24 +247,24 @@ $('.show-cart').on("click", ".delete-item", function(event) {
 
 // -1
 $('.show-cart').on("click", ".minus-item", function(event) {
-    var name = $(this).data('name')
-    shoppingCart.removeItemFromCart(name);
+    var id = $(this).data('id')
+    shoppingCart.removeItemFromCart(id);
     displayCart();
     displayCart2();
 })
 // +1
 $('.show-cart').on("click", ".plus-item", function(event) {
-    var name = $(this).data('name')
-    shoppingCart.addItemToCart(name);
+    var id = $(this).data('id');
+    shoppingCart.addItemToCart(id);
     displayCart();
     displayCart2();
 })
 
 // Item count input
 $('.show-cart').on("change", ".item-count", function(event) {
-    var name = $(this).data('name');
+    var id = $(this).data('id');
     var count = Number($(this).val());
-    shoppingCart.setCountForItem(name, count);
+    shoppingCart.setCountForItem(id, count);
     displayCart();
     displayCart2();
 });

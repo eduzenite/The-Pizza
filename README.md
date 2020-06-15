@@ -38,5 +38,14 @@ I created some data in the system through Seeds, in addition to inserting 4 imag
 In this step I created the product controllers and integrated them with their respective views. I reduced the code, implemented the area filters using the URL parameters, which allowed me to use the same controller and the same view for any product category.
 
 <h2>6° Step</h2>
-In this step, the entire login and profile management system was implemented. Now the user can register and update his profile information on the respective pages. As Laravel uses Boostratp, little changes were made to the layout, however several custom fields in the user profile were added.
+In this step, the entire login and profile management systems were implemented. Now the user can register and update his profile information on the respective pages. As Laravel uses Boostrap, little changes were made to the layout, however several custom fields were added to the user profile.
 
+<h2>7° Step</h2>
+I have finished implementing the ordering system. Orders are placed in the system and saved in the database.
+
+<h2>8° Step</h2>
+I implemented the script that changes the store's currency.
+
+<h1>Considerations</h1>
+<p>I could have used a ready-made online store, like Prestashop or WooCommerce, to develop the system, but I preferred to develop it from scratch in Laravel to consolidate my knowledge.</p>
+<p>The layout used is Boostrap 4, but I prefer to use more complete HTML templates like the one I used on the sys.forumdelivery.com.br website.</p>

@@ -6,7 +6,7 @@
                 <img src="{{ asset('assets/img/slides/slide-1.jpg') }}" class="img-fluid" alt="Example headline">
                 <div class="container">
                     <div class="carousel-caption text-left">
-                        <h1>Duble the fun on every delivery</h1>
+                        <h1>Double the fun on every delivery</h1>
                         <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta
                             gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
                         <p><a class="btn btn-lg btn-warning" href="{{ route('products', ['category' => 'pizzas']) }}" role="button"><i class="fa fa-pizza-slice"></i> Pizzas</a></p>
