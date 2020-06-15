@@ -33,7 +33,7 @@
                     <a class="nav-link" href="{{ route('index') }}">Home</a>
                 </li>
                 <li class="nav-item {{ request()->is('products/pizzas') ? 'active' : '' }}">
-                        <a class="nav-link" href="{{ route('products', ['category' => 'pizzas']) }}">Pizza</a>
+                    <a class="nav-link" href="{{ route('products', ['category' => 'pizzas']) }}">Pizza</a>
                 </li>
                 <li class="nav-item {{ request()->is('products/drinks') ? 'active' : '' }}">
                     <a class="nav-link" href="{{ route('products', ['category' => 'drinks']) }}">Drinks</a>
@@ -59,15 +59,27 @@
             </ul>
             <form class="form-inline my-2 my-md-0" action="{{ route('products') }}">
                 <div class="input-group">
-                    <input class="form-control" type="text" placeholder="Search" value="{{ !empty($request->q) ? $request->q : '' }}" name="q" aria-label="Search">
+                    <input class="form-control" type="text" placeholder="Search"
+                           value="{{ !empty($request->q) ? $request->q : '' }}" name="q" aria-label="Search">
                     <div class="input-group-append">
-                        <button type="submit" class="input-group-text" id="basic-addon2"><i class="fa fa-search"></i></button>
+                        <button type="submit" class="input-group-text" id="basic-addon2"><i class="fa fa-search"></i>
+                        </button>
                     </div>
                 </div>
 
             </form>
-            <div class="btn-group">
-                <button type="button" class="btn btn-primary ml-2" data-toggle="modal" data-target="#cart"><i class="fa fa-shopping-basket"></i> (<span class="total-count"></span>)</button>
+            <div class="ml-2">
+                <div class="dropdown">
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#cart"><i
+                                class="fa fa-shopping-basket"></i> (<span class="total-count"></span>)
+                        </button>
+                        <button class="btn btn-success money_symbol" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+                                aria-haspopup="true" aria-expanded="false"><i class="fa fa-dollar-sign"></i></button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item" id="dollar" href="#"><i class="fa fa-dollar-sign"></i> Dollar</a>
+                            <a class="dropdown-item" id="euro" href="#"><i class="fa fa-euro-sign"></i>  Euro</a>
+                        </div>
+                </div>
             </div>
         </div>
     </div>
@@ -95,21 +107,22 @@
             <div class="modal-body">
                 <table class="table table-striped">
                     <thead>
-                        <tr>
-                            <th>Product</th>
-                            <th>Price</th>
-                            <th>Quantity</th>
-                            <th>Action</th>
-                            <th>Total</th>
-                        </tr>
+                    <tr>
+                        <th>Product</th>
+                        <th>Price</th>
+                        <th>Quantity</th>
+                        <th>Action</th>
+                        <th>Total</th>
+                    </tr>
                     </thead>
                     <tbody class="show-cart">
 
                     </tbody>
                     <tfoot>
-                        <tr>
-                            <td colspan="4"><strong>Total price: <small class="money_symbol">$</small> <span class="total-cart"></span></strong></td>
-                        </tr>
+                    <tr>
+                        <td colspan="4"><strong>Total price: <small class="money_symbol">$</small> <span
+                                    class="total-cart"></span></strong></td>
+                    </tr>
                     </tfoot>
                 </table>
             </div>

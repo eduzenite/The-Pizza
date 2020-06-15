@@ -9,6 +9,23 @@ $(".sub").click(function () {
     }
 });
 
+// --
+// Store
+$("#dollar").click(function(){
+    localStorage.setItem("money", '<i class="fa fa-dollar-sign"></i>');
+    location.reload();
+});
+$("#euro").click(function(){
+    localStorage.setItem("money", '<i class="fa fa-euro-sign"></i>');
+    location.reload();
+});
+
+if (localStorage.getItem("money") === null){
+    $(".money_symbol").html('<i class="fa fa-dollar-sign"></i>');
+}else{
+    $(".money_symbol").html(localStorage.getItem("money"));
+}
+
 
 // --
 // ************************************************
