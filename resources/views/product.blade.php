@@ -11,6 +11,7 @@
                 </ol>
             </nav>
 
+            @include('layouts.alerts')
             <div class="row">
                 <div class="col-md-4">
                     <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">

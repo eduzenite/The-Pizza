@@ -7,7 +7,7 @@
                 <li class="breadcrumb-item active" aria-current="page">Cart</li>
             </ol>
         </nav>
-
+        @include('layouts.alerts')
         <ul class="list-group mb-3">
             <li class="list-group-item d-flex justify-content-between lh-condensed">
                 <div class="media">

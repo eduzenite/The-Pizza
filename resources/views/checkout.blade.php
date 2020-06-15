@@ -7,6 +7,7 @@
                 <li class="breadcrumb-item active" aria-current="page">Checkout</li>
             </ol>
         </nav>
+        @include('layouts.alerts')
         <div class="row">
             <div class="col-md-8">
                 <h4 class="mb-3">Billing address</h4>

@@ -27,20 +27,27 @@ Route::group([
 Route::get('/cart', function () {
     return view('cart');
 })->name('cart');
+
 Route::get('/checkout', function () {
     return view('checkout');
-})->name('checkout');
+})->name('checkout')->middleware('auth');
 
 Route::group([
     "prefix" => "user"
 ], function () {
-    Route::get('/login', function () {
-        return view('login');
-    })->name('user-login');
     Route::get('/profile', function () {
         return view('profile');
-    })->name('user-profile');
+    })->name('user-profile')->middleware('auth');
+
     Route::get('/purchases', function () {
         return view('purchases');
-    })->name('user-purchases');
+    })->name('user-purchases')->middleware('auth');
+
+    Route::post('/change-password', "ProfileController@change_password")->name('change_password')->middleware('auth');
+    Route::post('/change-profile', "ProfileController@change_profile")->name('change_profile')->middleware('auth');
+    Route::get('/logout', "ProfileController@logout")->name('exit')->middleware('auth');
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

@@ -17,17 +17,16 @@ class CreateUsersTable extends Migration
             $table->id();
             $table->string('first_name');
             $table->string('last_name');
-            $table->string('phone')->unique();
+            $table->string('phone')->nullable();
             $table->string('email')->unique();
             $table->string('address1');
-            $table->string('address2');
-            $table->string('country');
-            $table->string('state');
+            $table->string('address2')->nullable();
             $table->string('zip');
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

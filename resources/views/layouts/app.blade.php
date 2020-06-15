@@ -28,24 +28,33 @@
 
         <div class="collapse navbar-collapse" id="navbarsExample07XL">
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="{{ route('index') }}">Home <span class="sr-only">(current)</span></a>
+                <li class="nav-item  {{ Route::currentRouteName() == 'index' ? 'active' : '' }}">
+                    <a class="nav-link" href="{{ route('index') }}">Home</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('products', ['category' => 'pizzas']) }}">Pizza</a>
+                <li class="nav-item {{ request()->is('products/pizzas') ? 'active' : '' }}">
+                        <a class="nav-link" href="{{ route('products', ['category' => 'pizzas']) }}">Pizza</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item {{ request()->is('products/drinks') ? 'active' : '' }}">
                     <a class="nav-link" href="{{ route('products', ['category' => 'drinks']) }}">Drinks</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('user-profile') }}">My Profile</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('user-purchases') }}">Purchases</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('user-login') }}">Register/Login</a>
-                </li>
+                @if($user = Auth::user())
+                    <li class="nav-item {{ Route::currentRouteName() == 'user-purchases' ? 'active' : '' }}">
+                        <a class="nav-link" href="{{ route('user-purchases') }}">Purchases</a>
+                    </li>
+                    <li class="nav-item {{ Route::currentRouteName() == 'user-profile' ? 'active' : '' }}">
+                        <a class="nav-link" href="{{ route('user-profile') }}">My Profile</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('exit') }}">Logout</a>
+                    </li>
+                @else
+                    <li class="nav-item {{ Route::currentRouteName() == 'login' ? 'active' : '' }}">
+                        <a class="nav-link" href="{{ route('login') }}">Login</a>
+                    </li>
+                    <li class="nav-item {{ Route::currentRouteName() == 'register' ? 'active' : '' }}">
+                        <a class="nav-link" href="{{ route('register') }}">Register</a>
+                    </li>
+                @endif
             </ul>
             <form class="form-inline my-2 my-md-0" action="{{ route('products') }}">
                 <div class="input-group">

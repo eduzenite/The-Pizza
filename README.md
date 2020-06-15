@@ -36,3 +36,7 @@ I created some data in the system through Seeds, in addition to inserting 4 imag
 
 <h2>5° Step</h2>
 In this step I created the product controllers and integrated them with their respective views. I reduced the code, implemented the area filters using the URL parameters, which allowed me to use the same controller and the same view for any product category.
+
+<h2>6° Step</h2>
+In this step, the entire login and profile management system was implemented. Now the user can register and update his profile information on the respective pages. As Laravel uses Boostratp, little changes were made to the layout, however several custom fields in the user profile were added.
+

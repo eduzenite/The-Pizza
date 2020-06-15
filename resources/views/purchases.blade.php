@@ -8,6 +8,7 @@
                 <li class="breadcrumb-item active" aria-current="page">Purchases</li>
             </ol>
         </nav>
+        @include('layouts.alerts')
         <table class="table table-striped">
             <thead>
             <tr>

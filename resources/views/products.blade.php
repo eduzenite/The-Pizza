@@ -11,6 +11,8 @@
                     @endif
                 </ol>
             </nav>
+            @include('layouts.alerts')
+
             @if(count($products) > 0)
             <div class="row">
                 @foreach($products as $product)
