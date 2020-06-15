@@ -8,6 +8,7 @@
     <title>{{ config('app.name') }}</title>
     <link href="{{ asset('assets/vendor/bootstrap-4.5.0-dist/css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/vendor/fontawesome-free-5.13.0-web/css/all.css') }}" rel="stylesheet">
+
     <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet">
     @yield("style")
 </head>
@@ -66,27 +67,7 @@
 
             </form>
             <div class="btn-group">
-                <button type="button" class="btn btn-light dropdown-toggle ml-2" data-toggle="dropdown"
-                        data-display="static" aria-haspopup="true" aria-expanded="false">
-                    <i class="fa fa-shopping-basket"></i>
-                </button>
-                <div class="dropdown-menu">
-                    <li class="dropdown-item lh-condensed">
-                        <h6 class="my-0">Product name</h6>
-                        <small class="text-muted">3x / $ 5.00</small>
-                    </li>
-                    <li class="dropdown-item lh-condensed">
-                        <h6 class="my-0">Second product</h6>
-                        <small class="text-muted">3x / $ 5.00</small>
-                    </li>
-                    <li class="dropdown-item lh-condensed">
-                        <h6 class="my-0">Third item</h6>
-                        <small class="text-muted">3x / $ 5.00</small>
-                    </li>
-                    <li class="dropdown-item text-center">
-                        <a href="{{ route('cart') }}" class="btn btn-block btn-success"><i class="fa fa-shopping-basket"></i> Cart</a>
-                    </li>
-                </div>
+                <button type="button" class="btn btn-primary ml-2" data-toggle="modal" data-target="#cart"><i class="fa fa-shopping-basket"></i> (<span class="total-count"></span>)</button>
             </div>
         </div>
     </div>
@@ -102,9 +83,47 @@
     </div>
 </footer>
 
+<div class="modal fade" id="cart" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Cart</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Product</th>
+                            <th>Price</th>
+                            <th>Quantity</th>
+                            <th>Action</th>
+                            <th>Total</th>
+                        </tr>
+                    </thead>
+                    <tbody class="show-cart">
+
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="4"><strong>Total price: <small class="money_symbol">$</small> <span class="total-cart"></span></strong></td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <a href="{{ route('checkout') }}" class="btn btn-primary">Order now</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 <script src="{{ asset('assets/vendor/jquery-3.5.1/jquery-3.5.1.min.js ') }}"></script>
 <script src="{{ asset('assets/vendor/bootstrap-4.5.0-dist/js/bootstrap.min.js') }}"></script>
-
 <script>
     window.jQuery || document.write('<script src="{{ asset('assets/vendor/jquery-3.5.1/jquery-3.x-git.slim.min.js') }}"><\/script>')
 </script>

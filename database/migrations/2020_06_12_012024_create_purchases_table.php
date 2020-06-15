@@ -15,6 +15,9 @@ class CreatePurchasesTable extends Migration
     {
         Schema::create('purchases', function (Blueprint $table) {
             $table->id();
+
+            $table->string('comments');
+
             $table->timestamps();
             $table->softDeletes();
         });

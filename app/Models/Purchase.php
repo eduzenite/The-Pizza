@@ -10,14 +10,15 @@ class Purchase extends Model
     use SoftDeletes;
 
     protected $fillable = [
-        'name', 'description', 'price', 'status', 'category_id'
-    ];
-
-    protected $casts = [
-        'price' => 'float',
+        'comments'
     ];
 
     public function products(){
         return $this->hasMany(Product::class);
+    }
+
+    public function purchase_products()
+    {
+        return $this->hasMany(PurchaseProduct::class);
     }
 }

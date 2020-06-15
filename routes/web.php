@@ -32,6 +32,8 @@ Route::get('/checkout', function () {
     return view('checkout');
 })->name('checkout')->middleware('auth');
 
+Route::post('/checkout', "PurchaseController@store")->name('checkout')->middleware('auth');
+
 Route::group([
     "prefix" => "user"
 ], function () {
@@ -39,9 +41,8 @@ Route::group([
         return view('profile');
     })->name('user-profile')->middleware('auth');
 
-    Route::get('/purchases', function () {
-        return view('purchases');
-    })->name('user-purchases')->middleware('auth');
+    Route::get('/purchases', 'PurchaseController@index')->name('user-purchases')->middleware('auth');
+    Route::get('/purchases/{id?}', 'PurchaseController@show')->name('user-purchase')->middleware('auth');
 
     Route::post('/change-password', "ProfileController@change_password")->name('change_password')->middleware('auth');
     Route::post('/change-profile', "ProfileController@change_profile")->name('change_profile')->middleware('auth');

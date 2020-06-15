@@ -8,123 +8,126 @@
             </ol>
         </nav>
         @include('layouts.alerts')
-        <div class="row">
-            <div class="col-md-8">
-                <h4 class="mb-3">Billing address</h4>
-                <form class="needs-validation" novalidate="">
+        <form action="{{ route("checkout") }}" method="post">
+            @csrf
+            <div class="row">
+                <div class="col-md-8">
+                    <h4 class="mb-3">Delivery address</h4>
                     <div class="row">
                         <div class="col-md-6 mb-3">
-                            <label for="firstName">First name</label>
-                            <input type="text" class="form-control" id="firstName" placeholder="" value="Eduardo" disabled>
+                            <label for="first_name">First name</label>
+                            <input id="first_name" type="text"
+                                   class="form-control" disabled
+                                   value="{{ auth()->user()->first_name }}">
                         </div>
                         <div class="col-md-6 mb-3">
-                            <label for="lastName">Last name</label>
-                            <input type="text" class="form-control" id="lastName" placeholder="" value="Nascimento" disabled>
+                            <label for="last_name">Last name</label>
+                            <input id="last_name" type="text"
+                                   class="form-control" disabled
+                                   name="last_name" value="{{ auth()->user()->last_name }}">
                         </div>
                     </div>
 
                     <div class="mb-3">
-                        <label for="email">Email <span class="text-muted">(Optional)</span></label>
-                        <input type="email" class="form-control" id="email" value="eduzenite11@gmail.com" disabled>
-                    </div>
-
-                    <div class="mb-3">
-                        <label for="address">Address</label>
-                        <input type="text" class="form-control" id="address" placeholder="1234 Main St" required="">
-                        <div class="invalid-feedback">
-                            Please enter your shipping address.
+                        <label for="phone">Phone</label>
+                        <div class="input-group">
+                            <input id="phone" type="text"
+                                   class="form-control @error('phone') is-invalid @enderror"
+                                   name="phone" value="{{ auth()->user()->phone }}" required
+                                   autocomplete="phone"
+                                   autofocus>
+                            @error('phone')
+                            <span class="invalid-feedback" role="alert">{{ $message }}</span>
+                            @enderror
                         </div>
                     </div>
 
                     <div class="mb-3">
-                        <label for="address2">Address 2 <span class="text-muted">(Optional)</span></label>
-                        <input type="text" class="form-control" id="address2" placeholder="Apartment or suite">
+                        <label for="address1">Address <span class="text-danger">*</span></label>
+                        <input id="address1" type="text"
+                               class="form-control @error('address1') is-invalid @enderror"
+                               name="address1" value="{{ auth()->user()->address1 }}" required
+                               autocomplete="address1"
+                               autofocus>
+                        @error('address1')
+                        <span class="invalid-feedback" role="alert">{{ $message }}</span>
+                        @enderror
                     </div>
 
                     <div class="row">
-                        <div class="col-md-5 mb-3">
-                            <label for="country">Country</label>
-                            <select class="custom-select d-block w-100" id="country" required="">
-                                <option value="">Choose...</option>
-                                <option>United States</option>
-                            </select>
-                            <div class="invalid-feedback">
-                                Please select a valid country.
+                        <div class="col-md-6 mb-3">
+                            <div class="mb-3">
+                                <label for="address2">Address 2 <span
+                                        class="text-muted">(Optional)</span></label>
+                                <input id="address2" type="text"
+                                       class="form-control @error('address2') is-invalid @enderror"
+                                       name="address2" value="{{ auth()->user()->address2 }}"
+                                       autocomplete="address2"
+                                       autofocus>
+                                @error('address2')
+                                <span class="invalid-feedback" role="alert">{{ $message }}</span>
+                                @enderror
                             </div>
                         </div>
-                        <div class="col-md-4 mb-3">
-                            <label for="state">State</label>
-                            <select class="custom-select d-block w-100" id="state" required="">
-                                <option value="">Choose...</option>
-                                <option>California</option>
-                            </select>
-                            <div class="invalid-feedback">
-                                Please provide a valid state.
-                            </div>
-                        </div>
-                        <div class="col-md-3 mb-3">
-                            <label for="zip">Zip</label>
-                            <input type="text" class="form-control" id="zip" placeholder="" required="">
-                            <div class="invalid-feedback">
-                                Zip code required.
-                            </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="zip">Zip <span class="text-danger">*</span></label>
+                            <input id="zip" type="text"
+                                   class="form-control @error('zip') is-invalid @enderror"
+                                   name="zip" value="{{ auth()->user()->zip }}" required
+                                   autocomplete="zip"
+                                   autofocus>
+                            @error('zip')
+                            <span class="invalid-feedback" role="alert">{{ $message }}</span>
+                            @enderror
                         </div>
                     </div>
+
                     <hr class="mb-4">
 
                     <h4 class="mb-3">Payment</h4>
 
                     <div>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+                            <input class="form-check-input" type="radio" name="payment" id="inlineCheckbox1" required
+                                   value="Credit card">
                             <label class="form-check-label" for="inlineCheckbox1">Credit card</label>
                         </div>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+                            <input class="form-check-input" type="radio" name="payment" id="inlineCheckbox2" required
+                                   value="Debit card">
                             <label class="form-check-label" for="inlineCheckbox2">Debit card</label>
                         </div>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">
+                            <input class="form-check-input" type="radio" name="payment" id="inlineCheckbox3" required
+                                   value="Cash">
                             <label class="form-check-label" for="inlineCheckbox3">Cash</label>
                         </div>
                     </div>
-                </form>
+
+                    <hr class="mb-4">
+
+                    <h4 class="mb-3">Comments</h4>
+
+                    <div class="form-group">
+                        <label for="comments">Leave a comment about your order.</label>
+                        <textarea class="form-control" id="comments" name="comments" rows="5"></textarea>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <h4 class="d-flex justify-content-between align-items-center mb-3">
+                        <span class="text-muted">Your cart</span>
+                        <span class="badge badge-secondary badge-pill"><span class="total-count"></span></span>
+                    </h4>
+                    <ul class="list-group mb-3 show-cart2">
+                        <li class="list-group-item d-flex justify-content-between">
+                            <span>Total (USD)</span>
+                            <strong><small class="money_symbol">$</small> <span class="total-cart"></span></strong>
+                        </li>
+                    </ul>
+                    <hr class="mb-4">
+                    <button class="btn btn-primary btn-lg btn-block" type="submit">Continue to checkout</button>
+                </div>
             </div>
-            <div class="col-md-4 mb-4">
-                <h4 class="d-flex justify-content-between align-items-center mb-3">
-                    <span class="text-muted">Your cart</span>
-                    <span class="badge badge-secondary badge-pill">3</span>
-                </h4>
-                <ul class="list-group mb-3">
-                    <li class="list-group-item d-flex justify-content-between lh-condensed">
-                        <div>
-                            <h6 class="my-0">Product name</h6>
-                            <small class="text-muted">Brief description</small>
-                        </div>
-                        <span class="text-muted">$12</span>
-                    </li>
-                    <li class="list-group-item d-flex justify-content-between lh-condensed">
-                        <div>
-                            <h6 class="my-0">Second product</h6>
-                            <small class="text-muted">Brief description</small>
-                        </div>
-                        <span class="text-muted">$8</span>
-                    </li>
-                    <li class="list-group-item d-flex justify-content-between lh-condensed">
-                        <div>
-                            <h6 class="my-0">Third item</h6>
-                            <small class="text-muted">Brief description</small>
-                        </div>
-                        <span class="text-muted">$5</span>
-                    </li>
-                    <li class="list-group-item d-flex justify-content-between">
-                        <span>Total (USD)</span>
-                        <strong>$20</strong>
-                    </li>
-                </ul>
-                <hr class="mb-4">
-                <button class="btn btn-primary btn-lg btn-block" type="submit">Continue to checkout</button>
-            </div>
-        </div>
+        </form>
     </div>
 @endsection

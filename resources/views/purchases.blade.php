@@ -12,22 +12,21 @@
         <table class="table table-striped">
             <thead>
             <tr>
-                <th scope="col">#</th>
                 <th scope="col">Date</th>
                 <th class="text-right" scope="col">Actions</th>
             </tr>
             </thead>
             <tbody>
-            @for($i = 1; $i <= 10; $i++)
-            <tr>
-                <th scope="row">{{ $i }}</th>
-                <td>August 25, 2020</td>
-                <td class="text-right">
-                    <a class="btn btn-light"><i class="fa fa-eye"></i></a>
-                </td>
-            </tr>
-            @endfor
+            @foreach($purchases as $purchase)
+                <tr>
+                    <td>{{ $purchase->created_at->format("l jS \of F Y") }}</td>
+                    <td class="text-right">
+                        <a href="{{ route('user-purchase', [$purchase->id]) }}" class="btn btn-light"><i class="fa fa-eye"></i></a>
+                    </td>
+                </tr>
+            @endforeach
             </tbody>
         </table>
+        {{ $purchases->links('layouts.paginacao') }}
     </div>
 @endsection

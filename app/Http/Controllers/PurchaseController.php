@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Product;
+use App\Models\Purchase;
+use App\Models\PurchaseProduct;
 use Illuminate\Http\Request;
 
 class PurchaseController extends Controller
@@ -9,11 +12,13 @@ class PurchaseController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function index()
     {
-        //
+        $purchases = Purchase::paginate(12);
+//        $purchases = Purchase::paginate(12);
+        return view('purchases', ['purchases' => $purchases]);
     }
 
     /**
@@ -30,22 +35,40 @@ class PurchaseController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function store(Request $request)
     {
-        //
+        $purchase = new Purchase;
+        $purchase->comments = $request->comments;
+        $purchase->save();
+
+        foreach ($request->products as $json){
+            $product = json_decode($json);
+            $purchase_products = new PurchaseProduct();
+            $purchase_products->product_id = $product->id;
+            $purchase_products->purchase_id = $purchase->id;
+            $purchase_products->price = $product->price;
+            $purchase_products->quantity = $product->quantity;
+            $purchase_products->save();
+        }
+
+        return view('thanks');
     }
 
     /**
      * Display the specified resource.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function show($id)
     {
-        //
+        $purchase = Purchase::has('purchase_products')->find($id);
+        $products = PurchaseProduct::where('purchase_id', $id)
+            ->leftJoin('products', 'purchase_products.product_id', 'products.id')
+        ->select('purchase_products.*', 'products.name')->get();
+        return view('purchase', ['purchase' => $purchase, 'products' => $products]);
     }
 
     /**

@@ -18,7 +18,7 @@ class ProductController extends Controller
     {
         $products = Product::inRandomOrder()->has('photos')
             ->leftJoin('categories', 'products.category_id', 'categories.id')
-            ->select('products.*', 'categories.slug as category_name')
+            ->select('products.*', 'categories.slug as category_slug', 'categories.name as category_name')
             ->paginate(6);
 
 
@@ -44,7 +44,7 @@ class ProductController extends Controller
         })
             ->has('photos')
             ->leftJoin('categories', 'products.category_id', 'categories.id')
-            ->select('products.*', 'categories.slug as category_name')
+            ->select('products.*', 'categories.slug as category_slug', 'categories.name as category_name')
             ->paginate(12);
 
         return view('products', ['products' => $products, 'category' => $category, 'request' => $request]);
@@ -81,7 +81,7 @@ class ProductController extends Controller
     {
         $product = Product::
         leftJoin('categories', 'products.category_id', 'categories.id')
-            ->select('products.*', 'categories.name as category_name', 'categories.id as cat_id',
+            ->select('products.*', 'categories.slug as category_slug', 'categories.name as category_name', 'categories.id as cat_id',
                 'categories.slug as category_slug')
             ->find($id);
         $photos = $product->photos;
