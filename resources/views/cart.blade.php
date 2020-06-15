@@ -42,7 +42,7 @@
 
         <hr>
         <div class="text-right">
-        <button class="btn btn-primary">Checkout</button>
+        <a href="{{ route('checkout') }}" class="btn btn-primary">Checkout</a>
         </div>
     </div>
 @endsection

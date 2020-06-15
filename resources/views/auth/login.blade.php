@@ -65,6 +65,10 @@
                             </div>
                         </div>
                     </form>
+                    <hr>
+                    <div class="text-center">
+                        Or <a href="{{ route('register') }}">click here</a> to create an account.
+                    </div>
                 </div>
             </div>
         </div>
