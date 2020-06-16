@@ -49,3 +49,5 @@ I implemented the script that changes the store's currency.
 <h1>Considerations</h1>
 <p>I could have used a ready-made online store, like Prestashop or WooCommerce, to develop the system, but I preferred to develop it from scratch in Laravel to consolidate my knowledge.</p>
 <p>The layout used is Boostrap 4, but I prefer to use more complete HTML templates like the one I used on the sys.forumdelivery.com.br website.</p>
+
+![](screenshot.jpg)
